@@ -4,6 +4,6 @@ services:
     env: python
     region: oregon
     branch: main
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --prefer-binary --no-cache-dir -r requirements.txt
     startCommand: gunicorn app:app
     repo: https://github.com/Manikanta3920/Electricity_Dashboard
