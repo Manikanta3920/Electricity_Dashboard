@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Electricity Consumption Dashboard</title>
+  <meta charset="UTF-8">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Concert+One&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    body { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='250' preserveAspectRatio='none' viewBox='0 0 1440 250'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3crect width='1440' height='250' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M34 250L284 0L474.5 0L224.5 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1001%26quot%3b)'%3e%3c/path%3e%3cpath d='M281.6 250L531.6 0L809.1 0L559.1 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1001%26quot%3b)'%3e%3c/path%3e%3cpath d='M516.2 250L766.2 0L1003.2 0L753.2 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1001%26quot%3b)'%3e%3c/path%3e%3cpath d='M714.8000000000001 250L964.8000000000001 0L1042.8000000000002 0L792.8000000000001 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1001%26quot%3b)'%3e%3c/path%3e%3cpath d='M1394 250L1144 0L1042 0L1292 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1002%26quot%3b)'%3e%3c/path%3e%3cpath d='M1191.4 250L941.4000000000001 0L672.9000000000001 0L922.9000000000001 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1002%26quot%3b)'%3e%3c/path%3e%3cpath d='M932.8 250L682.8 0L637.8 0L887.8 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1002%26quot%3b)'%3e%3c/path%3e%3cpath d='M682.1999999999999 250L432.19999999999993 0L82.69999999999993 0L332.69999999999993 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1002%26quot%3b)'%3e%3c/path%3e%3cpath d='M1250.8215103713387 250L1440 60.82151037133863L1440 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1001%26quot%3b)'%3e%3c/path%3e%3cpath d='M0 250L189.17848962866137 250L 0 60.82151037133863z' fill='url(%26quot%3b%23SvgjsLinearGradient1002%26quot%3b)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='1440' height='250' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0%25' y1='100%25' x2='100%25' y2='0%25' id='SvgjsLinearGradient1001'%3e%3cstop stop-color='rgba(15%2c 70%2c 185%2c 0.2)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(15%2c 70%2c 185%2c 0.2)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient1002'%3e%3cstop stop-color='rgba(15%2c 70%2c 185%2c 0.2)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(15%2c 70%2c 185%2c 0.2)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e"); scroll-behavior: smooth; }
+    .navbar { background: #fc7813; margin-bottom: 80.5px; }
+.navbar-brand,
+.nav-link {
+  font-size: 20px;
+  font-weight: 900;
+  color: #000 !important; /* same as rgb(0, 0, 0) */
+  transition: color 0.2s ease-in-out; /* smoother transition */
+}
+
+.nav-link:hover {
+  color: #fff !important; /* white color on hover */
+}
+    .fullscreen-btn {
+      position: absolute; top: 10px; right: 10px;
+      background: #004466; color: white; border: none;
+      padding: 0.5rem; border-radius: 50%;
+      cursor: pointer; z-index: 10;
+    }
+    .fullscreen-btn:hover { background: #006699; }
+    .dashboard-preview {
+        margin: 40px;
+      width: 1300px; height: 562px;
+      overflow: auto; border: 2px solid #ccc; border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1); margin: 2rem auto;
+      background: white; position: relative;
+    }
+    .dashboard-preview .tableauViz { width: 1620px; height: 900px; }
+    .fullscreen-mode {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: white; z-index: 9999;
+      overflow: hidden; border: none; border-radius: 0;
+    }
+    .fullscreen-mode .tableauViz { width: 1620px; height: 900px; }
+    section { padding: 2rem; height: 400px; max-width: 1300px; margin: 2rem auto; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    h2 { color: #ffffff; margin-bottom: 1rem; text-align: center; transition: all 0.3s ease;}h2:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px #00c4ff, 0 0 16px #00c4ff;
+}
+    footer { background: #fc7813; color: rgb(0, 0, 0); padding: 1rem; text-align: center; }
+    .social-icons a { color: #004466; font-size: 1.5rem; margin: 0 0.5rem; }
+    .social-icons a:hover { color: #006699; }
+    p{
+        font-weight: 900;
+        font-size: 25px;
+    }
+    h1{
+        text-align: center;
+        color: white;
+        font-family: 'Archivo Black';
+        transition: color 0.2s ease-in-out;
+    }
+    h1:hover{
+        color: rgb(25, 253, 0);
+    }
+    .form123{
+        display: flex;
+        flex-direction: column;
+        margin: 2px;
+    }
+
+    input,textarea{
+        margin: 3px;
+        border-radius: 12px;
+    }
+    #contact-section{
+        height: 600px;
+    }
+    button{
+        background:linear-gradient(-45deg,rgb(193, 78, 219),rgb(232, 253, 5));
+        margin-bottom: 60px;
+        transition: all 0.2s ease-in-out;
+        border: none;
+        border-radius: 18px;
+    }
+    button:hover{
+        background:linear-gradient(45deg,rgb(193, 78, 219),rgb(232, 253, 5));
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">ElecDashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about-section">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact-section">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<h1>SmartGrid Monitor 2019-2020</h1>
+  <!-- Dashboard Preview -->
+  <div class="dashboard-preview" id="viz-wrapper">
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶</button>
+    <div class='tableauPlaceholder'>
+      <object class='tableauViz'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+        <param name='name' value='Electric_Consumption_Project_2025_Dashboard/ElectricalConsumption'/>
+        <param name='tabs' value='no'/>
+        <param name='toolbar' value='yes'/>
+        <param name='animate_transition' value='yes'/>
+        <param name='language' value='en-US'/>
+      </object>
+    </div>
+  </div>
+  
+  <!-- About Section -->
+   <h2>About the Project</h2>
+  <section id="about-section">
+    <p>This dashboard visualizes electricity consumption data across different states and regions of India for 2019 and 2020. Our aim is to make data more accessible and enable better understanding of energy trends and consumption behavior.</p>
+    <p>The project leverages Tableau for interactive visualizations, allowing you to filter and explore data easily. Built as part of an academic project to help policy makers, researchers, and students gain actionable insights into electricity usage.</p>
+  </section>
+
+  <!-- Contact Section -->
+    <h2>Contact Us</h2>
+  <section id="contact-section">
+    <p>Have questions or want to collaborate? Reach out via our social media profiles:</p>
+      <form action="https://formspree.io/f/xkgbpdor" method="POST" class="form123">
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      class="w-full p-3 border border-blue-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      required
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      class="w-full p-3 border border-blue-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      required
+    />
+    <textarea
+      name="message"
+      rows="4"
+      placeholder="Your Message"
+      class="w-full p-3 border border-blue-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      required
+    ></textarea>
+    <button
+      type="submit"
+      class="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+    >
+      Send Message
+    </button>
+  </form>
+    <div class="social-icons text-center">
+      <a href="https://www.linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>&copy; 2025 Electricity Dashboard. Powered by Data & Innovation.</footer>
+
+  <!-- Scripts -->
+  <script src="https://public.tableau.com/javascripts/api/viz_v1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const container = document.getElementById('viz-wrapper');
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        container.classList.add('fullscreen-mode');
+        container.requestFullscreen().catch(err => console.error(err));
+      } else {
+        document.exitFullscreen().then(() => {
+          container.classList.remove('fullscreen-mode');
+        });
+      }
+    }
+  </script>
+</body>
+</html>
