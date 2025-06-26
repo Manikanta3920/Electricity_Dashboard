@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: electricity-dashboard
+    env: python
+    region: oregon
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    repo: https://github.com/Manikanta3920/Electricity_Dashboard
